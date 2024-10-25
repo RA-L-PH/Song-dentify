@@ -1,0 +1,88 @@
+.modal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Slightly darker for better contrast */
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 8px;
+  padding: 30px; /* Increased padding for a more spacious look */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Softer shadow for depth */
+  width: 90%; /* Responsive width */
+  max-width: 500px; /* Maximum width for larger screens */
+  text-align: center;
+  animation: fadeIn 0.3s ease; /* Fade-in animation */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-title {
+  margin-bottom: 20px;
+  font-size: 26px; /* Slightly larger title */
+  color: #333;
+  font-weight: bold; /* Bold title for emphasis */
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* Stretch input fields to full width */
+}
+
+.input-field {
+  margin: 10px 0;
+  padding: 12px; /* Increased padding for input fields */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s; /* Transition for border color */
+}
+
+.input-field:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.error-message {
+  color: red;
+  margin: 10px 0;
+  font-size: 14px; /* Smaller font for error message */
+}
+
+.submit-button {
+  padding: 12px; /* Increased padding for buttons */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px; /* Larger font for buttons */
+  transition: background-color 0.3s, transform 0.2s; /* Added transform transition */
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+.submit-button:active {
+  transform: translateY(0); /* Reset lift effect on click */
+}

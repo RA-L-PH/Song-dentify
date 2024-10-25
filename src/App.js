@@ -1,23 +1,39 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import { auth } from './SERVICES/firebase';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import LandingPage from './COMPONENTS/LandingPage';
+import RecordDetails from './COMPONENTS/Record&Details';
 
 function App() {
+  const [user, setUser] = useState(null);
+  const [usageCount, setUsageCount] = useState(0);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setUsageCount(0);  // Reset usage count on login
+    });
+  }, []);
+
+  const handleLogout = () => {
+    signOut(auth).then(() => {
+      setUser(null);
+      setUsageCount(0);  // Reset usage count on logout
+    }).catch((error) => {
+      console.error('Error signing out: ', error);
+    });
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {!user && <LandingPage usageCount={usageCount} setUsageCount={setUsageCount} />}
+      {user && (
+        <>
+          <RecordDetails />
+          <button onClick={handleLogout}>Logout</button>
+        </>
+      )}
     </div>
   );
 }
