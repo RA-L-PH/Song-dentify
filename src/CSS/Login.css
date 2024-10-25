@@ -72,6 +72,7 @@
   background-color: #007bff;
   color: white;
   border: none;
+  width: 50px;
   border-radius: 4px;
   cursor: pointer;
   font-size: 18px; /* Larger font for buttons */

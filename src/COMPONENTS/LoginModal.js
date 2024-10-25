@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { signInWithEmailAndPassword, signInWithPopup, provider, auth } from '../SERVICES/firebase';
 import { FcGoogle } from 'react-icons/fc';
 
+
 const LoginModal = ({ onLoginSuccess, onClose }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -49,12 +50,12 @@ const LoginModal = ({ onLoginSuccess, onClose }) => {
             required
             className="input-field"
           />
-          {error && <p className="error-message">{error}</p>}
+          {error && <p className="error-message">{error}</p>}<br/>
           <button type="submit" className="submit-button">Log in</button>
-        </form>
+        </form><br/>
         <button onClick={handleGoogleLogin} className="google-login-button">
-          <FcGoogle className="google-icon" /> Log in with Google
-        </button>
+          <FcGoogle className="google-icon" /> Continue with Google
+        </button><br/><br/>
         <button onClick={onClose} className="close-button">Close</button>
       </div>
     </div>
